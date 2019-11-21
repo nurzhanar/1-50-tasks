@@ -1,45 +1,28 @@
-# include <iostream>
-# include <cmath> 
+#include <iostream>
 using namespace std;
-int main () 
-{
-  int D;
-  int M;
-  int Y;
-  cin>>D>>M>>Y;
-  switch (M)
-    {
-    	case 1:
-        case 3: 
-        case 5:
-        case 7:
-        case 8: 
-        case 10: 
-        case 12:
-            if (D >= 1 && D <= 31 )
-                cout<<"yes";
-            else
-                cout<<"no";
-                break;
-        case 2:
-            if (D >= 1 && D <= 28 )
-                cout<<"yes";
-            	else
-                cout<<"no";
-            	break;
-        case 4: 
-        case 6: 
-        case 9:
-        case 11: 
-            if (D >= 1 && D <= 30 )
-                cout<<"yes";
-            	else
-                cout<<"no";
-                break;
-                default:
-                cout<<"no";
-            	break;
-                                       
-    }                           
- return 0;
+int main() {
+	int d, m, y;
+	cin >> d >> m >> y;
+	bool exist = false;
+	if ((d<30 && d>0) && (m==4 || m==6 || m == 9 || m == 11) ) {
+		exist = true;
+	}else if ((d < 31 && d>0) && (m == 1 || m == 3|| m == 5 || m == 7 || m == 8 || m == 10 || m == 12)) {
+		exist = true;
+	}else if (m == 2) {
+		if (y % 400 == 0) {
+			if (d < 28) {
+				exist = true;
+			}
+		}
+		else if (d < 29) {
+			exist = true;
+		}
+	}
+	if (exist == true) {
+		cout << "Yes";
+	}
+	else {
+		cout << "No";
+	}
+	return 0;
 }
